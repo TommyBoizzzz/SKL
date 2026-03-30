@@ -75,14 +75,14 @@ nav ul.menu li a::after {
     bottom: -5px;
     width: 0%;
     height: 2px;
-    background: white;
+    background: #ff6200;
     transition: 0.3s;
 }
 nav ul.menu li a:hover::after {
     width: 100%;
 }
 nav ul.menu li a:hover {
-    color: #000;
+    color: #ff6200;
 }
 
 /* MOBILE MENU */
@@ -225,6 +225,7 @@ nav ul.menu li a:hover {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 25px;
     padding: 0 20px;
+    perspective: 1000px; /* for subtle 3D hover */
 }
 
 /* TECH BOX */
@@ -234,34 +235,63 @@ nav ul.menu li a:hover {
     align-items: center;
     justify-content: center;
     padding: 25px;
-    border-radius: 15px;
-    background: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff, #f8f8f8);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
     cursor: pointer;
+    transform-style: preserve-3d;
 }
 .tech-box img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 12px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
 }
 .tech-box h3 {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     text-align: center;
     color: #333;
+    transition: color 0.4s ease;
 }
+
+/* Hover Effects */
 .tech-box:hover {
-    transform: translateY(-10px) scale(1.08) rotateZ(-1deg);
-    box-shadow: 0 15px 30px rgba(255,122,0,0.35);
+    transform: translateY(-12px) scale(1.1) rotateX(3deg) rotateY(-3deg);
+    box-shadow: 0 20px 40px rgba(255,122,0,0.35);
+    background-color: white;
+}
+.tech-box:hover img {
+    transform: rotateZ(10deg) scale(1.1);
+}
+.tech-box:hover h3 {
+    color: #ff6600;
 }
 
 /* HIDE ANIMATION FOR FILTERING */
 .tech-box.hide {
     opacity: 0;
-    transform: translateY(20px) scale(0.9);
+    transform: translateY(30px) scale(0.8);
     pointer-events: none;
-    transition: all 0.4s ease;
+    transition: all 0.5s ease;
+}
+
+/* ADDITIONAL EFFECTS: Smooth fade-in when shown */
+.tech-box.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    transition: all 0.5s ease;
+}
+
+/* RESPONSIVE TOUCH FEEDBACK */
+@media (hover: none) and (pointer: coarse) {
+    .tech-box:hover {
+        transform: none;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        background: linear-gradient(145deg, #ffffff, #f8f8f8);
+    }
 }
 
 /* =================== CONTACT & MAP =================== */
@@ -360,9 +390,11 @@ footer {
         <button class="filter-btn" onclick="filterTech('framework', event)">Framework</button>
         <button class="filter-btn" onclick="filterTech('database', event)">Databases</button>
         <button class="filter-btn" onclick="filterTech('webapp', event)">Web Applications</button>
+        <button class="filter-btn" onclick="filterTech('mobile', event)">Mobile Applications</button>
     </div>
     <div class="tech-grid">
 
+        <!-- Languages -->
         <div class="tech-box" data-category="languages">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
             <h3>HTML5</h3>
@@ -384,7 +416,7 @@ footer {
             <h3>C#</h3>
         </div>
 
-
+        <!-- Framework -->
         <div class="tech-box" data-category="framework">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
             <h3>React</h3>
@@ -403,6 +435,7 @@ footer {
         </div>
 
 
+        <!-- Database -->
         <div class="tech-box" data-category="database">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
             <h3>MySQL</h3>
@@ -416,12 +449,26 @@ footer {
             <h3>SQL Server</h3>
         </div>
 
-
-
+        <!-- Web App -->
         <div class="tech-box" data-category="webapp">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kendo/kendo-plain.svg" alt="Kendo UI">
+            <img src="https://sharepointsamurai.wordpress.com/wp-content/uploads/2014/04/kendoui.png" alt="Kendo UI">
             <h3>Kendo UI</h3>
         </div>
+
+        <!-- Mobile App -->
+        <div class="tech-box" data-category="mobile">
+            <img src="https://static.vecteezy.com/system/resources/previews/072/678/241/non_2x/google-flutter-logo-icon-free-png.png" alt="Flutter">
+            <h3>Flutter</h3>
+        </div>
+        <div class="tech-box" data-category="mobile">
+            <img src="https://images.opencollective.com/nativephp/16fb9d3/logo/256.png" alt="Nativephp">
+            <h3>Nativephp</h3>
+        </div>
+        <div class="tech-box" data-category="mobile">
+            <img src="https://download.logo.wine/logo/Kotlin_(programming_language)/Kotlin_(programming_language)-Logo.wine.png" alt="Kotlin">
+            <h3>Kotlin</h3>
+        </div>
+        
 
     </div>
 </section>
