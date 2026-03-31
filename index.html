@@ -746,11 +746,47 @@
                 }
             }
 
-            /* MAP */
-            .map iframe {
+            /* =================== MAP SECTION =================== */
+            .map-section {
+                padding: 80px 20px;
+                background: #f9fbff;
+                text-align: center;
+            }
+
+            .map-container {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            .map-container h2 {
+                font-size: 36px;
+                color: #ff7a00;
+                margin-bottom: 15px;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            .map-container p {
+                font-size: 16px;
+                color: #555;
+                margin-bottom: 40px;
+            }
+
+            .map-wrapper {
+                border-radius: 24px;
+                overflow: hidden;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .map-wrapper:hover {
+                transform: scale(1.02);
+                box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+            }
+
+            .map-wrapper iframe {
                 width: 100%;
-                height: 350px;
-                border-radius: 12px;
+                height: 450px;
                 border: 0;
             }
 
@@ -1122,8 +1158,18 @@
     </section>
 
     <!-- MAP -->
-    <section class="map">
-        <iframe src="https://www.google.com/maps?q=11.530038,104.912976&z=15&output=embed" loading="lazy" allowfullscreen></iframe>
+    <section class="map-section" id="location">
+        <div class="map-container">
+            <h2>Our Location</h2>
+            <p>Visit us at our office in Cambodia. We are happy to welcome you!</p>
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps?q=11.530038,104.912976&z=15&output=embed" 
+                    loading="lazy" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
