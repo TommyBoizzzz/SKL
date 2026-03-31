@@ -234,53 +234,157 @@
 
             /* =================== SERVICES =================== */
             .services {
-                padding: 80px 20px;
+                padding: 100px 20px;
+                background: #ffffff;
                 text-align: center;
             }
-            .services-grid {
-                display: grid;
-                gap: 20px;
-                max-width: 700px;
-                margin: 40px auto;
+
+            .section-title {
+                font-size: 42px;
+                font-weight: 700;
+                color: #ff7a00;
+                margin-bottom: 60px;
             }
+
+            .section-title::after {
+                content: '';
+                width: 60px;
+                height: 3px;
+                background: #ff7a00;
+                display: block;
+                margin: 10px auto 0;
+                border-radius: 2px;
+            }
+
+            /* One column layout - 1 box per line */
+            .services-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                max-width: 800px;
+                margin: 0 auto 80px;
+            }
+
             .service-box {
                 background: #f9fbff;
-                border-radius: 12px;
+                border-radius: 16px;
                 overflow: hidden;
-                transition: 0.3s;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+                transition: all 0.3s ease;
             }
+
+            .service-box:hover {
+                box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+            }
+
             .service-header {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 18px 20px;
+                padding: 24px 28px;
                 cursor: pointer;
+                background: white;
             }
+
             .service-header h3 {
-                font-size: 16px;
-                color: #007bff;
+                font-size: 20px;
+                color: #ff7a00;
+                margin: 0;
+                font-weight: 600;
             }
-            .service-header span {
-                font-size: 22px;
-                transition: 0.3s;
+
+            .toggle-icon {
+                font-size: 28px;
+                color: #ff7a00;
+                transition: transform 0.4s ease;
             }
+
             .service-content {
                 max-height: 0;
                 overflow: hidden;
-                padding: 0 20px;
+                padding: 0 28px;
                 text-align: left;
-                transition: all 0.4s ease;
+                transition: all 0.5s ease;
             }
+
             .service-content p {
-                font-size: 14px;
-                margin-bottom: 10px;
+                font-size: 15.5px;
+                line-height: 1.7;
+                color: #444;
+                margin-bottom: 12px;
             }
+
+            .example {
+                color: #d35400;
+                font-size: 14.5px;
+                padding-left: 18px;
+                border-left: 4px solid #ff7a00;
+            }
+
             .service-box.active .service-content {
-                max-height: 200px;
-                padding: 15px 20px 20px;
+                max-height: 260px;
+                padding: 22px 28px 30px;
             }
-            .service-box.active .service-header span {
+
+            .service-box.active .toggle-icon {
                 transform: rotate(45deg);
+            }
+
+            /* Horizontal Line Separator */
+            .section-divider {
+                height: 2px;
+                background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+                max-width: 600px;
+                margin: 60px auto;
+            }
+
+            /* Areas of Expertise */
+            .expertise {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .expertise-title {
+                font-size: 28px;
+                font-weight: 700;
+                color: #ff7a00;
+                margin-bottom: 60px;
+            }
+
+            .expertise-title::after {
+                content: '';
+                width: 80px;
+                height: 3px;
+                background: #ff7a00;
+                display: block;
+                margin: 10px auto 0;
+                border-radius: 2px;
+            }
+
+            .expertise-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .expertise-box {
+                background: white;
+                padding: 28px 32px;
+                border-radius: 16px;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+                text-align: left;
+            }
+
+            .expertise-box h4 {
+                color: #ff7a00;
+                font-size: 20px;
+                margin-bottom: 14px;
+            }
+
+            .expertise-box p {
+                color: #555;
+                line-height: 1.75;
+                font-size: 15px;
             }
 
             /* =================== TECH =================== */
@@ -437,6 +541,20 @@
             }
 
             /* =================== TESTIMONIALS =================== */
+            #testimonials {
+                padding: 80px 20px;
+                text-align: center;
+            }
+
+            #testimonials .section-title {
+                font-size: 36px;
+                margin-bottom: 20px;
+                color: #ff7a00;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                animation: fadeUp 0.8s ease forwards;
+            }
             #testimonials .cards {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -759,67 +877,84 @@
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">What Do We Do?</h2>
+<!-- SERVICES -->
+<section class="services" id="services">
+    <div class="container">
+        <h2 class="section-title">What Do We Do?</h2>
 
-            <div class="services-grid">
-                <div class="service-box">
-                    <div class="service-header" onclick="toggleBox(this)">
-                        <h3>API Integration</h3>
-                        <span>+</span>
-                    </div>
-                    <div class="service-content">
-                        <p>Tailored API implementation and integration with the most widely used software in the industry.</p>
-                        <p class="example">Example: After mergers or acquisitions, companies struggle with data integration. We handle secure data migration for you.</p>
-                    </div>
+        <div class="services-grid">
+            
+            <div class="service-box">
+                <div class="service-header" onclick="toggleBox(this)">
+                    <h3>API Integration</h3>
+                    <span class="toggle-icon">+</span>
                 </div>
-
-                <div class="service-box">
-                    <div class="service-header" onclick="toggleBox(this)">
-                        <h3>Web & System Development</h3>
-                        <span>+</span>
-                    </div>
-                    <div class="service-content">
-                        <p>We build websites and CRM systems to manage and control your operations.</p>
-                        <p class="example">Example: Booking system with account creation, payments, class booking, and backend management.</p>
-                    </div>
+                <div class="service-content">
+                    <p>Tailored API implementation and integration with the most widely used software in the industry.</p>
+                    <p class="example">Example: After mergers or acquisitions, we handle secure data migration for you.</p>
                 </div>
+            </div>
 
-                <div class="service-box">
-                    <div class="service-header" onclick="toggleBox(this)">
-                        <h3>Automation & Workflows</h3>
-                        <span>+</span>
-                    </div>
-                    <div class="service-content">
-                        <p>Automating processes to save time and reduce manual tasks.</p>
-                        <p class="example">Example: Automating notifications, reports, and daily workflows.</p>
-                    </div>
+            <div class="service-box">
+                <div class="service-header" onclick="toggleBox(this)">
+                    <h3>Web & System Development</h3>
+                    <span class="toggle-icon">+</span>
                 </div>
+                <div class="service-content">
+                    <p>We build websites and CRM systems to manage and control your operations.</p>
+                    <p class="example">Example: Booking system with account creation, payments, class booking, and backend management.</p>
+                </div>
+            </div>
 
-                <div class="service-box">
-                    <div class="service-header" onclick="toggleBox(this)">
-                        <h3>Business Process Management</h3>
-                        <span>+</span>
-                    </div>
-                    <div class="service-content">
-                        <p>Connecting systems into one seamless workflow to avoid errors.</p>
-                        <p class="example">Example: Linking bank systems with HR software like ADP for payroll automation.</p>
-                    </div>
+            <div class="service-box">
+                <div class="service-header" onclick="toggleBox(this)">
+                    <h3>Automation & Workflows</h3>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="service-content">
+                    <p>Automating processes to save time and reduce manual tasks.</p>
+                    <p class="example">Example: Automating notifications, reports, and daily workflows.</p>
+                </div>
+            </div>
+
+            <div class="service-box">
+                <div class="service-header" onclick="toggleBox(this)">
+                    <h3>Business Process Management</h3>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="service-content">
+                    <p>Connecting systems into one seamless workflow to avoid errors.</p>
+                    <p class="example">Example: Linking bank systems with HR software like ADP for payroll automation.</p>
                 </div>
             </div>
         </div>
-        Areas of expertise
-    Cash Management
-    Does your business struggle with inaccurate reporting? Have you had issues with keeping adequate cash flow? Are you having problems with having to contact multiple vendors in order to get your questions or concerns answered? We can create and automate personalized cash reports to monitor cash flows and increase efficiency within the company.
 
-    Account entries
-    Entering manually entries can lead to errors and can be time consuming. We can design and develop a solution for you to automate and manage account entries linking your accounting software like SAP with other ERP.
+        <!-- Nice Horizontal Line Separator -->
+        <div class="section-divider"></div>
 
-    Payment systems
-    Nowadays, fraud is everywhere, so having an automated payment system is key, especially when your company manages a lot of daily payments. We can connect your softwares, banks and other platforms to re-design and automate your payment processes including signatures and other validation methods.
-    </section>
+        <!-- Areas of Expertise -->
+        <div class="expertise">
+            <h3 class="expertise-title">Areas of Expertise</h3>
+            
+            <div class="expertise-grid">
+                <div class="expertise-box">
+                    <h4>Cash Management</h4>
+                    <p>We create and automate personalized cash reports to monitor cash flows and increase efficiency within the company.</p>
+                </div>
+
+                <div class="expertise-box">
+                    <h4>Account Entries</h4>
+                    <p>We design and develop solutions to automate account entries by linking your accounting software like SAP with other ERP systems.</p>
+                </div>
+
+                <div class="expertise-box">
+                    <h4>Payment Systems</h4>
+                    <p>We connect your softwares, banks and platforms to build secure automated payment processes with proper validation and signatures.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- TECH -->
     <section id="tech">
@@ -943,7 +1078,9 @@
             <!-- Contact Info -->
             <div class="contact-info">
                 <h3>Get In Touch</h3>
-                <p><strong>Address:</strong> #50G, St. 456, Toul Toum Poung 2, Phnom Penh, Cambodia</p>
+                <p><strong>Address:</strong> #32, St.51BT, Sansam Kosal3 Village, 
+                    <br> Boeng Tumpun1 Commune, Mean Chey District, 
+                    <br> Phnom Penh, Cambodia</p>
                 <p><strong>Phone:</strong> (+855) 12 657 527</p>
                 <p><strong>Email:</strong> info@khawin.com</p>
                 <p><strong>Working Hours:</strong> Monday - Friday: 9:00 AM – 6:00 PM</p>
