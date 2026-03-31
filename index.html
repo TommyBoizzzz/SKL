@@ -1,530 +1,1029 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SKL Solutions</title>
-<style>
-/* =================== GLOBAL =================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', Arial, sans-serif;
-}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SKL Solutions</title>
+        <style>
+            /* =================== GLOBAL =================== */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins', Arial, sans-serif;
+            }
 
-html {
-    scroll-behavior: smooth;
-}
+            html {
+                scroll-behavior: smooth;
+                scroll-padding-top: 100px;
+            }
 
-body {
-    background: #f9f9f9;
-    color: #333;
-}
+            body {
+                background: #f9f9f9;
+                color: #333;
+                line-height: 1.6;
+            }
 
-/* =================== HEADER =================== */
-header {
-    background: linear-gradient(135deg, #ff8c42, #ffb347);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
+            /* =================== HEADER =================== */
+            header {
+                background: linear-gradient(135deg, #ff8c42, #ffb347);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
 
-/* NAV */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    margin: auto;
-    padding: 15px 0;
-}
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 90%;
+                margin: auto;
+                padding: 15px 0;
+            }
 
-/* LOGO */
-.logo img {
-    height: 75px;
-    border-radius: 12px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    cursor: pointer;
-}
-.logo img:hover {
-    transform: scale(1.12) rotateZ(-2deg);
-    box-shadow: 0 10px 20px rgba(255,153,0,0.6);
-}
+            .logo img {
+                height: 75px;
+                border-radius: 12px;
+                transition: transform 0.4s ease, box-shadow 0.4s ease;
+                cursor: pointer;
+            }
+            .logo img:hover {
+                transform: scale(1.12) rotateZ(-2deg);
+                box-shadow: 0 10px 20px rgba(255,153,0,0.6);
+            }
 
-/* MENU */
-nav ul.menu {
-    display: flex;
-    list-style: none;
-}
-nav ul.menu li {
-    margin-left: 30px;
-}
-nav ul.menu li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-    transition: 0.3s;
-}
-nav ul.menu li a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0%;
-    height: 2px;
-    background: #ff6200;
-    transition: 0.3s;
-}
-nav ul.menu li a:hover::after {
-    width: 100%;
-}
-nav ul.menu li a:hover {
-    color: #ff6200;
-}
+            nav ul.menu {
+                display: flex;
+                list-style: none;
+            }
+            nav ul.menu li {
+                margin-left: 30px;
+            }
+            nav ul.menu li a {
+                color: white;
+                text-decoration: none;
+                font-weight: 600;
+                position: relative;
+                transition: 0.3s;
+            }
+            nav ul.menu li a::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -5px;
+                width: 0%;
+                height: 2px;
+                background: #ff6200;
+                transition: 0.3s;
+            }
+            nav ul.menu li a:hover::after {
+                width: 100%;
+            }
+            nav ul.menu li a:hover {
+                color: #ff6200;
+            }
 
-/* MOBILE MENU */
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    color: white;
-    cursor: pointer;
-}
-.mobile-menu {
-    display: none;
-    flex-direction: column;
-    background: linear-gradient(135deg, #ff8c42, #ffb347);
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 100%;
-    text-align: center;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.5s ease;
-}
-.mobile-menu.show {
-    display: flex;
-    max-height: 500px;
-}
-.mobile-menu li {
-    margin: 15px 0;
-}
-.mobile-menu li a {
-    color: white;
-    font-weight: 600;
-    font-size: 18px;
-}
+            /* MOBILE MENU */
+            .menu-toggle {
+                display: none;
+                font-size: 28px;
+                color: white;
+                cursor: pointer;
+            }
+            .mobile-menu {
+                display: none;
+                flex-direction: column;
+                background: linear-gradient(135deg, #ff8c42, #ffb347);
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 100%;
+                text-align: center;
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height 0.5s ease;
+            }
+            .mobile-menu.show {
+                display: flex;
+                max-height: 500px;
+            }
+            .mobile-menu li {
+                margin: 15px 0;
+            }
+            .mobile-menu li a {
+                color: white;
+                font-weight: 600;
+                font-size: 18px;
+            }
 
-/* =================== HERO =================== */
-.hero {
-    height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url('https://images.unsplash.com/photo-1498050108023-c5249f4df085') center/cover no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    color: white;
-    padding: 20px;
-}
-.hero h2 {
-    font-size: 50px;
-    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    animation: fadeUp 1s ease forwards;
-}
-.hero p {
-    font-size: 20px;
-    margin-top: 15px;
-    animation: fadeUp 1.2s ease forwards;
-}
-.btn {
-    background: linear-gradient(45deg,#ff7a00,#ffb347);
-    color: white;
-    padding: 14px 28px;
-    text-decoration: none;
-    border-radius: 50px;
-    margin-top: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(255,153,0,0.5);
-}
+            /* =================== HERO =================== */
+            .hero {
+                height: 90vh;
+                background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1498050108023-c5249f4df085') center/cover no-repeat;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                text-align: center;
+                color: white;
+                padding: 20px;
+            }
+            .hero h2 {
+                font-size: 50px;
+                text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+                animation: fadeUp 1s ease forwards;
+            }
+            .hero p {
+                font-size: 20px;
+                margin-top: 15px;
+                animation: fadeUp 1.2s ease forwards;
+            }
+            .btn {
+                background: linear-gradient(45deg,#ff7a00,#ffb347);
+                color: white;
+                padding: 14px 28px;
+                text-decoration: none;
+                border-radius: 50px;
+                margin-top: 25px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                display: inline-block;
+            }
+            .btn:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 25px rgba(255,153,0,0.5);
+            }
 
-/* =================== SECTION =================== */
-.section {
-    padding: 70px 20px;
-    text-align: center;
-}
+            /* =================== WHY US =================== */
+            .why-us {
+                padding: 80px 20px;
+                background: #f9f9f9;
+                text-align: center;
+            }
+            .why-us h2 {
+                font-size: 36px;
+                margin-bottom: 20px;
+                color: #ff7a00;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                animation: fadeUp 0.8s ease forwards;
+            }
+            .why-us h2::after {
+                content: '';
+                width: 60px;
+                height: 3px;
+                background: #ff7a00;
+                display: block;
+                margin: 10px auto 0;
+                border-radius: 2px;
+            }
+            .why-us p {
+                max-width: 800px;
+                margin: 0 auto 50px auto;
+                font-size: 1.1rem;
+                color: #555;
+                line-height: 1.7;
+            }
 
-/* =================== SERVICES =================== */
-.services {
-    display: flex;
-    gap: 25px;
-    margin-top: 30px;
-}
-.service-box {
-    flex: 1;
-    padding: 30px;
-    border-radius: 15px;
-    background: linear-gradient(135deg,#ffb347,#ff7a00);
-    color: white;
-    font-weight: 600;
-    font-size: 18px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.service-box:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
+            .cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
 
-/* =================== AREA OF EXPERTISE / TECH =================== */
-.section#tech {
-    background: #fefefe;
-    padding: 70px 20px;
-}
-.section#tech h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #ff7a00;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    animation: fadeUp 0.8s ease forwards;
-}
+            .card {
+                background: #fff;
+                padding: 30px 20px;
+                border-radius: 20px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+                transition: all 0.3s ease;
+                text-align: left;
+            }
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            }
+            .card .icon {
+                width: 60px;
+                height: 60px;
+                border-radius: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                background: linear-gradient(135deg, #ff8c42, #ffb347);
+            }
+            .card .icon img {
+                width: 30px;
+                height: 30px;
+            }
+            .card h3 {
+                font-size: 1.25rem;
+                margin-bottom: 10px;
+                color: #111;
+            }
+            .card p {
+                font-size: 1rem;
+                color: #555;
+                line-height: 1.6;
+            }
 
-/* FILTER BUTTONS */
-.filter-buttons {
-    margin-bottom: 40px;
-}
-.filter-btn {
-    padding: 10px 22px;
-    margin: 5px;
-    border: 2px solid #ff7a00;
-    background: white;
-    color: #ff7a00;
-    font-weight: 600;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.filter-btn:hover,
-.filter-btn.active {
-    background: #ff7a00;
-    color: white;
-    box-shadow: 0 8px 20px rgba(255,122,0,0.4);
-}
+            /* =================== SERVICES =================== */
+            .services {
+                padding: 80px 20px;
+                text-align: center;
+            }
+            .services-grid {
+                display: grid;
+                gap: 20px;
+                max-width: 700px;
+                margin: 40px auto;
+            }
+            .service-box {
+                background: #f9fbff;
+                border-radius: 12px;
+                overflow: hidden;
+                transition: 0.3s;
+            }
+            .service-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 18px 20px;
+                cursor: pointer;
+            }
+            .service-header h3 {
+                font-size: 16px;
+                color: #007bff;
+            }
+            .service-header span {
+                font-size: 22px;
+                transition: 0.3s;
+            }
+            .service-content {
+                max-height: 0;
+                overflow: hidden;
+                padding: 0 20px;
+                text-align: left;
+                transition: all 0.4s ease;
+            }
+            .service-content p {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+            .service-box.active .service-content {
+                max-height: 200px;
+                padding: 15px 20px 20px;
+            }
+            .service-box.active .service-header span {
+                transform: rotate(45deg);
+            }
 
-/* TECH GRID */
-.tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 25px;
-    padding: 0 20px;
-    perspective: 1000px; /* for subtle 3D hover */
-}
+            /* =================== TECH =================== */
+            #tech {
+                background: #fefefe;
+                padding: 70px 20px;
+                text-align: center;
+            }
+            #tech h2 {
+                font-size: 36px;
+                margin-bottom: 20px;
+                color: #ff7a00;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                animation: fadeUp 0.8s ease forwards;
+            }
+            .filter-buttons {
+                margin-bottom: 40px;
+            }
+            .filter-btn {
+                padding: 10px 22px;
+                margin: 5px;
+                border: 2px solid #ff7a00;
+                background: white;
+                color: #ff7a00;
+                font-weight: 600;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .filter-btn:hover,
+            .filter-btn.active {
+                background: #ff7a00;
+                color: white;
+                box-shadow: 0 8px 20px rgba(255,122,0,0.4);
+            }
+            .tech-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 25px;
+                padding: 0 20px;
+                perspective: 1000px;
+            }
+            .tech-box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 25px;
+                border-radius: 20px;
+                background: linear-gradient(145deg, #ffffff, #f8f8f8);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+                transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+                cursor: pointer;
+                transform-style: preserve-3d;
+            }
+            .tech-box img {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 15px;
+                transition: transform 0.5s ease;
+            }
+            .tech-box h3 {
+                font-size: 17px;
+                font-weight: 600;
+                text-align: center;
+                color: #333;
+                transition: color 0.4s ease;
+            }
+            .tech-box:hover {
+                transform: translateY(-12px) scale(1.1) rotateX(3deg) rotateY(-3deg);
+                box-shadow: 0 20px 40px rgba(255,122,0,0.35);
+                background-color: white;
+            }
+            .tech-box:hover img {
+                transform: rotateZ(10deg) scale(1.1);
+            }
+            .tech-box:hover h3 {
+                color: #ff6600;
+            }
+            .tech-box.hide {
+                opacity: 0;
+                transform: translateY(30px) scale(0.8);
+                pointer-events: none;
+                transition: all 0.5s ease;
+            }
+            .tech-box.show {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                pointer-events: auto;
+                transition: all 0.5s ease;
+            }
 
-/* TECH BOX */
-.tech-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    border-radius: 20px;
-    background: linear-gradient(145deg, #ffffff, #f8f8f8);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
-    cursor: pointer;
-    transform-style: preserve-3d;
-}
-.tech-box img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 15px;
-    transition: transform 0.5s ease;
-}
-.tech-box h3 {
-    font-size: 17px;
-    font-weight: 600;
-    text-align: center;
-    color: #333;
-    transition: color 0.4s ease;
-}
+            /* =================== HISTORY =================== */
+            .history {
+                padding: 80px 20px;
+                background: #f9fbff;
+                text-align: center;
+            }
+            .history .container {
+                max-width: 1100px;
+                margin: auto;
+            }
+            .history .section-title {
+                font-size: 36px;
+                margin-bottom: 20px;
+                color: #ff7a00;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                animation: fadeUp 0.8s ease forwards;
+            }
+            .history .section-title::after {
+                content: '';
+                width: 60px;
+                height: 4px;
+                background: #ff7a00;
+                display: block;
+                margin: 10px auto 0;
+                border-radius: 5px;
+            }
+            .history-text {
+                font-size: 16px;
+                color: #555;
+                line-height: 1.8;
+                max-width: 800px;
+                margin: 20px auto 50px;
+            }
+            .history-stats {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 25px;
+            }
+            .stat-box {
+                background: white;
+                padding: 30px 20px;
+                border-radius: 15px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+                transition: 0.3s ease;
+            }
+            .stat-box:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+            }
+            .stat-box h3 {
+                font-size: 32px;
+                color: #ff7a00;
+                margin-bottom: 10px;
+            }
+            .stat-box p {
+                font-size: 14px;
+                color: #666;
+            }
 
-/* Hover Effects */
-.tech-box:hover {
-    transform: translateY(-12px) scale(1.1) rotateX(3deg) rotateY(-3deg);
-    box-shadow: 0 20px 40px rgba(255,122,0,0.35);
-    background-color: white;
-}
-.tech-box:hover img {
-    transform: rotateZ(10deg) scale(1.1);
-}
-.tech-box:hover h3 {
-    color: #ff6600;
-}
+            /* =================== TESTIMONIALS =================== */
+            #testimonials .cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+                margin-top: 40px;
+            }
+            #testimonials .card {
+                background: #fff;
+                padding: 30px 20px;
+                border-radius: 20px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+                text-align: left;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            #testimonials .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            }
+            #testimonials .card .icon {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #ff8c42, #ffb347);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 15px;
+            }
+            #testimonials .card .icon img {
+                width: 30px;
+                height: 30px;
+            }
+            #testimonials .card h3 {
+                font-size: 1.25rem;
+                margin-bottom: 5px;
+                color: #111;
+            }
+            #testimonials .card p {
+                font-size: 0.95rem;
+                color: #555;
+                line-height: 1.6;
+            }
 
-/* HIDE ANIMATION FOR FILTERING */
-.tech-box.hide {
-    opacity: 0;
-    transform: translateY(30px) scale(0.8);
-    pointer-events: none;
-    transition: all 0.5s ease;
-}
+            /* =================== CONTACT =================== */
+            #contact {
+                padding: 80px 20px;
+                text-align: center;
+            }
 
-/* ADDITIONAL EFFECTS: Smooth fade-in when shown */
-.tech-box.show {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
-    transition: all 0.5s ease;
-}
+            #contact .section-title {
+                font-size: 36px;
+                margin-bottom: 20px;
+                color: #ff7a00;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                animation: fadeUp 0.8s ease forwards;
+            }
 
-/* RESPONSIVE TOUCH FEEDBACK */
-@media (hover: none) and (pointer: coarse) {
-    .tech-box:hover {
-        transform: none;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        background: linear-gradient(145deg, #ffffff, #f8f8f8);
-    }
-}
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                max-width: 1200px;
+                margin: 50px auto;
+                padding: 0 20px;
+            }
 
-/* =================== CONTACT & MAP =================== */
-.map iframe {
-    width: 100%;
-    height: 350px;
-    border-radius: 12px;
-    border: 0;
-}
-footer {
-    background: linear-gradient(135deg, #ff7a00, #ffb347);
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
+            .contact-info {
+                background: white;
+                padding: 45px 40px;
+                border-radius: 24px;
+                box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+                text-align: left;
+                height: fit-content;
+            }
 
-/* =================== ANIMATION =================== */
-@keyframes fadeUp {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
+            .contact-info h3 {
+                color: #ff7a00;
+                font-size: 28px;
+                margin-bottom: 30px;
+                font-weight: 700;
+                position: relative;
+                padding-bottom: 12px;
+            }
 
-/* =================== RESPONSIVE =================== */
-@media (max-width:768px) {
-    nav ul.menu { display: none; }
-    .menu-toggle { display: block; }
-    .services { flex-direction: column; }
-    .hero h2 { font-size: 32px; }
-    .hero p { font-size: 18px; }
-    .tech-grid { grid-template-columns: 1fr; }
-    .filter-btn { padding: 8px 18px; font-size: 14px; }
-}
-</style>
-</head>
-<body>
+            .contact-info h3::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 60px;
+                height: 3px;
+                background: linear-gradient(to right, #ff7a00, #ffb347);
+                border-radius: 3px;
+            }
 
-<!-- HEADER -->
-<header>
-    <nav>
-        <div class="logo">
-            <img src="./Images/logo.png" alt="logo">
-        </div>
-        <ul class="menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#tech">Tech</a></li>
-            <li><a href="#contact">Contact</a></li>
+            .contact-info p {
+                font-size: 16.5px;
+                color: #444;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: flex-start;
+                gap: 14px;
+                line-height: 1.5;
+            }
+
+            .contact-info p strong {
+                color: #222;
+                min-width: 85px;
+                display: inline-block;
+            }
+
+            .contact-form {
+                background: white;
+                padding: 45px 40px;
+                border-radius: 24px;
+                box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+            }
+
+            .contact-form h3 {
+                color: #ff7a00;
+                font-size: 28px;
+                margin-bottom: 35px;
+                font-weight: 700;
+                text-align: center;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+                padding: 16px 20px;
+                margin-bottom: 22px;
+                border-radius: 12px;
+                border: 1.5px solid #e0e0e0;
+                font-size: 15.5px;
+                background: #fafafa;
+                transition: all 0.3s ease;
+            }
+
+            .contact-form input:focus,
+            .contact-form textarea:focus {
+                outline: none;
+                border-color: #ff7a00;
+                background: #fff;
+                box-shadow: 0 0 0 4px rgba(255, 122, 0, 0.12);
+            }
+
+            .contact-form textarea {
+                min-height: 145px;
+                resize: vertical;
+            }
+
+            .contact-form button {
+                width: 100%;
+                padding: 17px 30px;
+                background: linear-gradient(45deg, #ff7a00, #ffb347);
+                border: none;
+                border-radius: 50px;
+                color: white;
+                font-size: 17px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.4s ease;
+                box-shadow: 0 8px 25px rgba(255, 122, 0, 0.35);
+            }
+
+            .contact-form button:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 15px 35px rgba(255, 122, 0, 0.45);
+                background: linear-gradient(45deg, #ff6600, #ff9a1f);
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .contact-grid {
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+                }
+                .contact-info,
+                .contact-form {
+                    padding: 35px 25px;
+                }
+            }
+
+            /* MAP */
+            .map iframe {
+                width: 100%;
+                height: 350px;
+                border-radius: 12px;
+                border: 0;
+            }
+
+            /* FOOTER */
+            footer {
+                background: linear-gradient(135deg, #ff7a00, #ffb347);
+                color: white;
+                text-align: center;
+                padding: 25px 20px;
+            }
+
+            /* =================== ANIMATION =================== */
+            @keyframes fadeUp {
+                0% { opacity: 0; transform: translateY(30px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+
+            /* =================== RESPONSIVE =================== */
+            @media (max-width:768px) {
+                .logo img { height: 60px; }
+                nav ul.menu { display: none; }
+                .menu-toggle { display: block; }
+                .hero h2 { font-size: 32px; }
+                .hero p { font-size: 18px; }
+                .services-grid { grid-template-columns: 1fr; }
+                .tech-grid { grid-template-columns: 1fr; }
+                .filter-btn { padding: 8px 18px; font-size: 14px; }
+                .contact-grid { grid-template-columns: 1fr; }
+            }
+
+            @media (hover: none) and (pointer: coarse) {
+                .tech-box:hover {
+                    transform: none;
+                    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+                    background: linear-gradient(145deg, #ffffff, #f8f8f8);
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./Images/logo.png" alt="SKL Solutions Logo" loading="lazy">
+            </div>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why-us">About</a></li>
+                <!-- <li><a href="#services">Services</a></li>
+                <li><a href="#tech">Tech</a></li>
+                <li><a href="#testimonials">Testimonials</a></li> -->
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        </nav>
+        <ul class="mobile-menu" id="mobileMenu">
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#why-us" onclick="toggleMenu()">About</a></li>
+            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+            <li><a href="#tech" onclick="toggleMenu()">Tech</a></li>
+            <li><a href="#testimonials" onclick="toggleMenu()">Testimonials</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </ul>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    </nav>
-    <ul class="mobile-menu" id="mobileMenu">
-        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-        <li><a href="#about" onclick="toggleMenu()">About</a></li>
-        <li><a href="#services" onclick="toggleMenu()">Services</a></li>
-        <li><a href="#tech" onclick="toggleMenu()">Tech</a></li>
-        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-    </ul>
-</header>
+    </header>
 
-<!-- HERO -->
-<section class="hero fade" id="home">
-    <h2>Welcome to SKL Solutions</h2>
-    <p>We build modern websites and digital solutions</p>
-    <a href="#contact" class="btn">Get Started</a>
-</section>
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <h2>Welcome to SKL Solutions</h2>
+        <p>Business Applications specialist. We design and develop business applications for the past 15 years.<br>
+        SKL Solutions will optimize your processes and solve your business issues using the latest technologies and frameworks.</p>
+        <a href="#contact" class="btn">Get Started</a>
+    </section>
 
-<!-- ABOUT -->
-<section class="section fade" id="about">
-    <h2>About Us</h2>
-    <p>Professional IT solutions to grow your business.</p>
-</section>
+    <!-- WHY US -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <h2>WHY CHOOSING US?</h2>
+            <p>Specialists in our field, we know all the ins and outs when it comes to business process automation.<br>
+            We are expert in the financial field - cash management, accounting entries - payments automations.<br>
+            We will treat your project as ours, using the agile method, solving any kind of business operation issues.</p>
 
-<!-- SERVICES -->
-<section class="section fade" id="services">
-    <h2>Services</h2>
-    <div class="services">
-        <div class="service-box">
-            <h3>Web Design</h3>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/587/587494.png" alt="360° Agency" loading="lazy"></div>
+                    <h3>360° AGENCY</h3>
+                    <p>We both design and develop. With our 15 years experience, we will think for you what is the best way to optimize your business processes and workflows.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/1283/1283342.png" alt="Experienced Team" loading="lazy"></div>
+                    <h3>EXPERIENCED AND REACTIVE</h3>
+                    <p>We are a team of 10 developers all expert in their fields. Reachable 24/7, we use whatsapp, slack and other communications tools that allow us to reduce drastically the back and forth.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><img src="https://png.pngtree.com/png-clipart/20230403/original/pngtree-process-line-icon-png-image_9021743.png" alt="Agile Method" loading="lazy"></div>
+                    <h3>AGILE METHOD</h3>
+                    <p>We are splitting each projects into phases to prioritize and match your budget. Our knowledge in the business application field is key to reduce the timeline of your project.</p>
+                </div>
+            </div>
         </div>
-        <div class="service-box">
-            <h3>Development</h3>
-        </div>
-        <div class="service-box">
-            <h3>Support</h3>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- TECH / AREA OF EXPERTISE -->
-<section class="section fade" id="tech">
-    <h2>Area of Expertise</h2>
-    <div class="filter-buttons">
-        <button class="filter-btn active" onclick="filterTech('all', event)">All</button>
-        <button class="filter-btn" onclick="filterTech('languages', event)">Languages</button>
-        <button class="filter-btn" onclick="filterTech('framework', event)">Framework</button>
-        <button class="filter-btn" onclick="filterTech('database', event)">Databases</button>
-        <button class="filter-btn" onclick="filterTech('webapp', event)">Web Applications</button>
-        <button class="filter-btn" onclick="filterTech('mobile', event)">Mobile Applications</button>
-    </div>
-    <div class="tech-grid">
+    <!-- HISTORY -->
+    <section class="history">
+        <div class="container">
+            <h2 class="section-title">Our History</h2>
+            <p class="history-text">
+                Located in Cambodia, Sokha, Senior developer, started his company 15 years ago 
+                to work with a well known French start up specialized in cash flow management processes. 
+                KHAWIN LAB has grown and became their main outsourced development team; since then 
+                they diversified into multiple business applications fields. With 10 people now, 
+                the company has lead several extremely complex projects for CAC40 companies.
+            </p>
 
-        <!-- Languages -->
-        <div class="tech-box" data-category="languages">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
-            <h3>HTML5</h3>
+            <div class="history-stats">
+                <div class="stat-box">
+                    <h3>15+</h3>
+                    <p>Large Groups Clients</p>
+                </div>
+                <div class="stat-box">
+                    <h3>500+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-box">
+                    <h3>15000+</h3>
+                    <p>Issues Tickets Solved</p>
+                </div>
+            </div>
         </div>
-        <div class="tech-box" data-category="languages">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
-            <h3>CSS3</h3>
-        </div>
-        <div class="tech-box" data-category="languages">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
-            <h3>JavaScript</h3>
-        </div>
-        <div class="tech-box" data-category="languages">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
-            <h3>Java</h3>
-        </div>
-        <div class="tech-box" data-category="languages">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
-            <h3>C#</h3>
-        </div>
+    </section>
 
-        <!-- Framework -->
-        <div class="tech-box" data-category="framework">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
-            <h3>React</h3>
-        </div>
-        <div class="tech-box" data-category="framework">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular">
-            <h3>Angular</h3>
-        </div>
-        <div class="tech-box" data-category="framework">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg" alt="Bootstrap">
-            <h3>Bootstrap</h3>
-        </div>
-        <div class="tech-box" data-category="framework">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js">
-            <h3>Vue.js</h3>
-        </div>
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">What Do We Do?</h2>
 
+            <div class="services-grid">
+                <div class="service-box">
+                    <div class="service-header" onclick="toggleBox(this)">
+                        <h3>API Integration</h3>
+                        <span>+</span>
+                    </div>
+                    <div class="service-content">
+                        <p>Tailored API implementation and integration with the most widely used software in the industry.</p>
+                        <p class="example">Example: After mergers or acquisitions, companies struggle with data integration. We handle secure data migration for you.</p>
+                    </div>
+                </div>
 
-        <!-- Database -->
-        <div class="tech-box" data-category="database">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
-            <h3>MySQL</h3>
-        </div>
-        <div class="tech-box" data-category="database">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
-            <h3>PostgreSQL</h3>
-        </div>
-        <div class="tech-box" data-category="database">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server">
-            <h3>SQL Server</h3>
-        </div>
+                <div class="service-box">
+                    <div class="service-header" onclick="toggleBox(this)">
+                        <h3>Web & System Development</h3>
+                        <span>+</span>
+                    </div>
+                    <div class="service-content">
+                        <p>We build websites and CRM systems to manage and control your operations.</p>
+                        <p class="example">Example: Booking system with account creation, payments, class booking, and backend management.</p>
+                    </div>
+                </div>
 
-        <!-- Web App -->
-        <div class="tech-box" data-category="webapp">
-            <img src="https://sharepointsamurai.wordpress.com/wp-content/uploads/2014/04/kendoui.png" alt="Kendo UI">
-            <h3>Kendo UI</h3>
-        </div>
+                <div class="service-box">
+                    <div class="service-header" onclick="toggleBox(this)">
+                        <h3>Automation & Workflows</h3>
+                        <span>+</span>
+                    </div>
+                    <div class="service-content">
+                        <p>Automating processes to save time and reduce manual tasks.</p>
+                        <p class="example">Example: Automating notifications, reports, and daily workflows.</p>
+                    </div>
+                </div>
 
-        <!-- Mobile App -->
-        <div class="tech-box" data-category="mobile">
-            <img src="https://static.vecteezy.com/system/resources/previews/072/678/241/non_2x/google-flutter-logo-icon-free-png.png" alt="Flutter">
-            <h3>Flutter</h3>
+                <div class="service-box">
+                    <div class="service-header" onclick="toggleBox(this)">
+                        <h3>Business Process Management</h3>
+                        <span>+</span>
+                    </div>
+                    <div class="service-content">
+                        <p>Connecting systems into one seamless workflow to avoid errors.</p>
+                        <p class="example">Example: Linking bank systems with HR software like ADP for payroll automation.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="tech-box" data-category="mobile">
-            <img src="https://images.opencollective.com/nativephp/16fb9d3/logo/256.png" alt="Nativephp">
-            <h3>Nativephp</h3>
-        </div>
-        <div class="tech-box" data-category="mobile">
-            <img src="https://download.logo.wine/logo/Kotlin_(programming_language)/Kotlin_(programming_language)-Logo.wine.png" alt="Kotlin">
-            <h3>Kotlin</h3>
-        </div>
-        
+        Areas of expertise
+    Cash Management
+    Does your business struggle with inaccurate reporting? Have you had issues with keeping adequate cash flow? Are you having problems with having to contact multiple vendors in order to get your questions or concerns answered? We can create and automate personalized cash reports to monitor cash flows and increase efficiency within the company.
 
-    </div>
-</section>
+    Account entries
+    Entering manually entries can lead to errors and can be time consuming. We can design and develop a solution for you to automate and manage account entries linking your accounting software like SAP with other ERP.
+
+    Payment systems
+    Nowadays, fraud is everywhere, so having an automated payment system is key, especially when your company manages a lot of daily payments. We can connect your softwares, banks and other platforms to re-design and automate your payment processes including signatures and other validation methods.
+    </section>
+
+    <!-- TECH -->
+    <section id="tech">
+        <h2>Area of Expertise</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterTech('all', event)">All</button>
+            <button class="filter-btn" onclick="filterTech('languages', event)">Languages</button>
+            <button class="filter-btn" onclick="filterTech('framework', event)">Framework</button>
+            <button class="filter-btn" onclick="filterTech('database', event)">Databases</button>
+            <button class="filter-btn" onclick="filterTech('webapp', event)">Web Applications</button>
+            <button class="filter-btn" onclick="filterTech('mobile', event)">Mobile Applications</button>
+        </div>
+        <div class="tech-grid">
+            <!-- Languages -->
+            <div class="tech-box" data-category="languages">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
+                <h3>HTML5</h3>
+            </div>
+            <div class="tech-box" data-category="languages">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
+                <h3>CSS3</h3>
+            </div>
+            <div class="tech-box" data-category="languages">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
+                <h3>JavaScript</h3>
+            </div>
+            <div class="tech-box" data-category="languages">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" loading="lazy">
+                <h3>Java</h3>
+            </div>
+            <div class="tech-box" data-category="languages">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" loading="lazy">
+                <h3>C#</h3>
+            </div>
+
+            <!-- Framework -->
+            <div class="tech-box" data-category="framework">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" loading="lazy">
+                <h3>React</h3>
+            </div>
+            <div class="tech-box" data-category="framework">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" loading="lazy">
+                <h3>Angular</h3>
+            </div>
+            <div class="tech-box" data-category="framework">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg" alt="Bootstrap" loading="lazy">
+                <h3>Bootstrap</h3>
+            </div>
+            <div class="tech-box" data-category="framework">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" loading="lazy">
+                <h3>Vue.js</h3>
+            </div>
+
+            <!-- Database -->
+            <div class="tech-box" data-category="database">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy">
+                <h3>MySQL</h3>
+            </div>
+            <div class="tech-box" data-category="database">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" loading="lazy">
+                <h3>PostgreSQL</h3>
+            </div>
+            <div class="tech-box" data-category="database">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" loading="lazy">
+                <h3>SQL Server</h3>
+            </div>
+
+            <!-- Web App -->
+            <div class="tech-box" data-category="webapp">
+                <img src="https://sharepointsamurai.wordpress.com/wp-content/uploads/2014/04/kendoui.png" alt="Kendo UI" loading="lazy">
+                <h3>Kendo UI</h3>
+            </div>
+
+            <!-- Mobile -->
+            <div class="tech-box" data-category="mobile">
+                <img src="https://static.vecteezy.com/system/resources/previews/072/678/241/non_2x/google-flutter-logo-icon-free-png.png" alt="Flutter" loading="lazy">
+                <h3>Flutter</h3>
+            </div>
+            <div class="tech-box" data-category="mobile">
+                <img src="https://images.opencollective.com/nativephp/16fb9d3/logo/256.png" alt="Nativephp" loading="lazy">
+                <h3>Nativephp</h3>
+            </div>
+            <div class="tech-box" data-category="mobile">
+                <img src="https://download.logo.wine/logo/Kotlin_(programming_language)/Kotlin_(programming_language)-Logo.wine.png" alt="Kotlin" loading="lazy">
+                <h3>Kotlin</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Our Client Says</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" alt="Client Icon" loading="lazy"/>
+                    </div>
+                    <h3>Amelie Humann</h3>
+                    <p><strong>CEO - Founder</strong></p>
+                    <p>I loved working with Sokha and his team. They understand your project, but more than that, they even think about better solutions to improve your idea and make it work.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" alt="Client Icon" loading="lazy"/>
+                    </div>
+                    <h3>Sothon Hua</h3>
+                    <p><strong>CEO - Founder</strong></p>
+                    <p>Sokha worked with us for the past 10 years, and he has helped us building a patterned product that is now the leading integration platform in France.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <!-- CONTACT -->
-<section class="section fade" id="contact">
-    <h2>Contact</h2>
-    <p>Email: info@skl.com</p>
+<section id="contact">
+    <div style="max-width: 1200px; margin: auto;">
+        <h2 class="section-title" style="text-align: center;">Contact Us</h2>
+        
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p><strong>Address:</strong> #50G, St. 456, Toul Toum Poung 2, Phnom Penh, Cambodia</p>
+                <p><strong>Phone:</strong> (+855) 12 657 527</p>
+                <p><strong>Email:</strong> info@khawin.com</p>
+                <p><strong>Working Hours:</strong> Monday - Friday: 9:00 AM – 6:00 PM</p>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <input type="text" placeholder="Your Full Name" required>
+                    <input type="email" placeholder="Your Email Address" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Write your message here..." rows="6" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- MAP -->
-<section class="map fade">
-    <iframe src="https://www.google.com/maps?q=11.530038,104.912976&z=15&output=embed"></iframe>
-</section>
+    <!-- MAP -->
+    <section class="map">
+        <iframe src="https://www.google.com/maps?q=11.530038,104.912976&z=15&output=embed" loading="lazy" allowfullscreen></iframe>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-    <p>© 2026 SKL Solutions</p>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <p>© <span id="currentYear"></span> SKL Solutions. All Rights Reserved.</p>
+    </footer>
 
-<!-- JS -->
-<script>
-// MOBILE MENU TOGGLE
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("show");
-}
+    <script>
+    // MOBILE MENU
+    function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("show");
+    }
 
-// SCROLL ANIMATION
-const faders = document.querySelectorAll('.fade');
-window.addEventListener('scroll', () => {
-    faders.forEach(el => {
-        if (window.scrollY > el.offsetTop - 300) {
-            el.classList.add('show');
-        }
+    // AUTO CURRENT YEAR IN FOOTER
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    // SCROLL ANIMATION (kept as-is, you can enhance later)
+    const faders = document.querySelectorAll('.fade');
+    window.addEventListener('scroll', () => {
+        faders.forEach(el => {
+            if (window.scrollY > el.offsetTop - 300) {
+                el.classList.add('show');
+            }
+        });
     });
-});
 
-// TECH FILTER
-function filterTech(category, event) {
-    const items = document.querySelectorAll('.tech-box');
-    const buttons = document.querySelectorAll('.filter-btn');
+    // TECH FILTER
+    function filterTech(category, event) {
+        const items = document.querySelectorAll('.tech-box');
+        const buttons = document.querySelectorAll('.filter-btn');
 
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
 
-    items.forEach(item => {
-        if (category !== 'all' && item.dataset.category !== category) {
-            item.classList.add('hide');
-            setTimeout(() => item.style.display = 'none', 400);
-        } else {
-            item.style.display = 'flex';
-            setTimeout(() => item.classList.remove('hide'), 10);
-        }
-    });
-}
-</script>
-</body>
-</html> 
+        items.forEach(item => {
+            if (category !== 'all' && item.dataset.category !== category) {
+                item.classList.add('hide');
+                setTimeout(() => item.style.display = 'none', 400);
+            } else {
+                item.style.display = 'flex';
+                setTimeout(() => item.classList.remove('hide'), 10);
+            }
+        });
+    }
+
+    // SERVICES ACCORDION
+    function toggleBox(header) {
+        const currentBox = header.parentElement;
+
+        document.querySelectorAll(".service-box").forEach(box => {
+            if (box !== currentBox) box.classList.remove("active");
+        });
+
+        currentBox.classList.toggle("active");
+    }
+
+    // Close mobile menu when clicking a link (already handled in HTML)
+    </script>
+    </body>
+    </html>
