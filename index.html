@@ -748,46 +748,81 @@
 
             /* =================== MAP SECTION =================== */
             .map-section {
-                padding: 80px 20px;
-                background: #f9fbff;
+                padding: 100px 20px;
+                background: linear-gradient(135deg, #fff7f0, #fffdf9);
                 text-align: center;
             }
 
             .map-container {
-                max-width: 900px;
+                max-width: 1000px;
                 margin: 0 auto;
             }
 
             .map-container h2 {
-                font-size: 36px;
+                font-size: 42px;
                 color: #ff7a00;
-                margin-bottom: 15px;
                 font-weight: 700;
-                text-transform: uppercase;
+                margin-bottom: 10px;
             }
 
             .map-container p {
-                font-size: 16px;
+                font-size: 18px;
                 color: #555;
                 margin-bottom: 40px;
             }
 
             .map-wrapper {
+                position: relative;
                 border-radius: 24px;
                 overflow: hidden;
-                box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+                box-shadow: 0 20px 50px rgba(0,0,0,0.12);
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
             }
 
             .map-wrapper:hover {
                 transform: scale(1.02);
-                box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+                box-shadow: 0 25px 60px rgba(0,0,0,0.18);
             }
 
             .map-wrapper iframe {
                 width: 100%;
-                height: 450px;
+                height: 500px;
                 border: 0;
+            }
+
+            .map-btn {
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+                background: linear-gradient(45deg, #ff7a00, #ffb347);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 50px;
+                font-weight: 600;
+                text-decoration: none;
+                box-shadow: 0 8px 20px rgba(255,122,0,0.4);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .map-btn:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 12px 25px rgba(255,122,0,0.6);
+            }
+
+            @media (max-width: 768px) {
+                .map-container h2 {
+                    font-size: 32px;
+                }
+                .map-container p {
+                    font-size: 16px;
+                }
+                .map-wrapper iframe {
+                    height: 350px;
+                }
+                .map-btn {
+                    padding: 10px 20px;
+                    font-size: 14px;
+                }
             }
 
             /* FOOTER */
@@ -1156,18 +1191,29 @@
 
         </div>
     </section>
-
-    <!-- MAP -->
+    
+    <!-- MAP SECTION - FIXED & BEAUTIFUL -->
     <section class="map-section" id="location">
         <div class="map-container">
-            <h2>Our Location</h2>
-            <p>Visit us at our office in Cambodia. We are happy to welcome you!</p>
+            <h2>Our Office Location</h2>
+            <p>We are located in Phnom Penh, Cambodia. Visit our office or get directions directly to us!</p>
+            
             <div class="map-wrapper">
                 <iframe 
-                    src="https://www.google.com/maps?q=11.530038,104.912976&z=15&output=embed" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.85!2d104.9108!3d11.53004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDMxJzQ4LjEiTiAxMDTCsDU0JzQ2LjciRQ!5e0!3m2!1sen!2skh!4v1740000000000"
+                    width="100%" 
+                    height="520" 
+                    style="border:0;" 
+                    allowfullscreen="" 
                     loading="lazy" 
-                    allowfullscreen>
+                    referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
+                
+                <a href="https://www.google.com/maps?q=11.530038,104.912976" 
+                target="_blank" 
+                class="map-btn">
+                    Get Directions
+                </a>
             </div>
         </div>
     </section>
